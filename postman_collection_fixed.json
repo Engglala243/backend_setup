@@ -1,0 +1,541 @@
+{
+  "info": {
+    "name": "Common Server API - E-commerce",
+    "description": "Complete API collection for E-commerce Saree Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "common-server"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001",
+      "type": "string"
+    },
+    {
+      "key": "webToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Authentication",
+          "item": [
+            {
+              "name": "Admin Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "if (pm.response.code === 200) {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.collectionVariables.set('adminToken', jsonData.data.access_token);",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"admin@server.com\",\n  \"otp\": \"8055\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/auth/login",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "auth", "login"]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Products",
+          "item": [
+            {
+              "name": "Create Product",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Beautiful Silk Saree",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Premium quality silk saree perfect for weddings",
+                      "type": "text"
+                    },
+                    {
+                      "key": "price",
+                      "value": "2500",
+                      "type": "text"
+                    },
+                    {
+                      "key": "discount_price",
+                      "value": "2000",
+                      "type": "text"
+                    },
+                    {
+                      "key": "discount_percentage",
+                      "value": "20",
+                      "type": "text"
+                    },
+                    {
+                      "key": "sku",
+                      "value": "SILK-001",
+                      "type": "text"
+                    },
+                    {
+                      "key": "stock_quantity",
+                      "value": "50",
+                      "type": "text"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "category-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "brand_id",
+                      "value": "brand-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "fabric_id",
+                      "value": "fabric-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "occasion_id",
+                      "value": "occasion-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "border_id",
+                      "value": "border-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "pattern_id",
+                      "value": "pattern-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "size_id",
+                      "value": "size-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "theme_id",
+                      "value": "theme-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "type_id",
+                      "value": "type-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "wash_care_id",
+                      "value": "wash-care-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "fashion_trend_id",
+                      "value": "fashion-trend-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "colors",
+                      "value": "[\"color-uuid-1\", \"color-uuid-2\"]",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_featured",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_trending",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "key": "images",
+                      "type": "file",
+                      "src": []
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/products",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "products"]
+                }
+              }
+            },
+            {
+              "name": "Filter Products",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminToken}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"category-uuid\",\n  \"priceMin\": 500,\n  \"priceMax\": 3000,\n  \"color\": [\"color-uuid-1\"],\n  \"sort\": \"price_low_to_high\",\n  \"page\": 1,\n  \"limit\": 20\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/products/filter",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "products", "filter"]
+                }
+              }
+            },
+            {
+              "name": "Get Product by ID",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/products/product-id-here",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "products", "product-id-here"]
+                }
+              }
+            },
+            {
+              "name": "Update Product",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminToken}}"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Updated Silk Saree",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": "Updated premium quality silk saree",
+                      "type": "text"
+                    },
+                    {
+                      "key": "price",
+                      "value": "2800",
+                      "type": "text"
+                    },
+                    {
+                      "key": "discount_price",
+                      "value": "2300",
+                      "type": "text"
+                    },
+                    {
+                      "key": "discount_percentage",
+                      "value": "18",
+                      "type": "text"
+                    },
+                    {
+                      "key": "sku",
+                      "value": "SILK-001-UPDATED",
+                      "type": "text"
+                    },
+                    {
+                      "key": "stock_quantity",
+                      "value": "75",
+                      "type": "text"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "category-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "brand_id",
+                      "value": "brand-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "fabric_id",
+                      "value": "fabric-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "occasion_id",
+                      "value": "occasion-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "border_id",
+                      "value": "border-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "pattern_id",
+                      "value": "pattern-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "size_id",
+                      "value": "size-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "theme_id",
+                      "value": "theme-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "type_id",
+                      "value": "type-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "wash_care_id",
+                      "value": "wash-care-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "fashion_trend_id",
+                      "value": "fashion-trend-uuid-here",
+                      "type": "text"
+                    },
+                    {
+                      "key": "colors",
+                      "value": "[\"color-uuid-1\", \"color-uuid-3\"]",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_featured",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_trending",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "images",
+                      "type": "file",
+                      "src": []
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/admin/products/product-id-here",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "products", "product-id-here"]
+                }
+              }
+            },
+            {
+              "name": "Delete Product",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{adminToken}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/products/product-id-here",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["admin", "products", "product-id-here"]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Web User",
+      "item": [
+        {
+          "name": "Products",
+          "item": [
+            {
+              "name": "Filter Products",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category\": \"category-uuid\",\n  \"priceMin\": 500,\n  \"priceMax\": 3000,\n  \"color\": [\"color-uuid-1\"],\n  \"sort\": \"price_low_to_high\",\n  \"page\": 1,\n  \"limit\": 20\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/web/products/filter",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["web", "products", "filter"]
+                }
+              }
+            },
+            {
+              "name": "Get Product by ID",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{baseUrl}}/web/products/product-id-here",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["web", "products", "product-id-here"]
+                }
+              }
+            },
+            {
+              "name": "Get Featured Products",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{baseUrl}}/web/products/featured?limit=10",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["web", "products", "featured"],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Search Products",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{baseUrl}}/web/products/search?q=silk&limit=20",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["web", "products", "search"],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "silk"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Authentication",
+          "item": [
+            {
+              "name": "Send Sign-Up OTP",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"9876543210\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/web/auth/send-signup-otp",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["web", "auth", "send-signup-otp"]
+                }
+              }
+            },
+            {
+              "name": "Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "if (pm.response.code === 200) {",
+                      "    var jsonData = pm.response.json();",
+                      "    pm.collectionVariables.set('webToken', jsonData.data.access_token);",
+                      "}"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"john@example.com\",\n  \"otp\": 1234\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/web/auth/login",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["web", "auth", "login"]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

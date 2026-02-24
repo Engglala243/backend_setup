@@ -1,0 +1,210 @@
+SAREE E-COMMERCE API LIST
+==========================
+
+ADMIN APIs (Total: 70)
+======================
+
+1. AUTHENTICATION (2 APIs)
+   - POST /admin/auth/login
+   - GET /admin/auth/profile
+
+2. CATEGORIES (5 APIs)
+   - POST /admin/categories
+   - GET /admin/categories
+   - GET /admin/categories/:id
+   - PUT /admin/categories/:id
+   - DELETE /admin/categories/:id
+
+3. BRANDS (5 APIs)
+   - POST /admin/brands
+   - GET /admin/brands
+   - GET /admin/brands/:id
+   - PUT /admin/brands/:id
+   - DELETE /admin/brands/:id
+
+4. COLORS (5 APIs)
+   - POST /admin/colors
+   - GET /admin/colors
+   - GET /admin/colors/:id
+   - PUT /admin/colors/:id
+   - DELETE /admin/colors/:id
+
+5. FABRICS (5 APIs)
+   - POST /admin/fabrics
+   - GET /admin/fabrics
+   - GET /admin/fabrics/:id
+   - PUT /admin/fabrics/:id
+   - DELETE /admin/fabrics/:id
+
+6. OCCASIONS (5 APIs)
+   - POST /admin/occasions
+   - GET /admin/occasions
+   - GET /admin/occasions/:id
+   - PUT /admin/occasions/:id
+   - DELETE /admin/occasions/:id
+
+7. BORDERS (5 APIs)
+   - POST /admin/borders
+   - GET /admin/borders
+   - GET /admin/borders/:id
+   - PUT /admin/borders/:id
+   - DELETE /admin/borders/:id
+
+8. FASHION TRENDS (5 APIs)
+   - POST /admin/fashion-trends
+   - GET /admin/fashion-trends
+   - GET /admin/fashion-trends/:id
+   - PUT /admin/fashion-trends/:id
+   - DELETE /admin/fashion-trends/:id
+
+9. PATTERNS (5 APIs)
+   - POST /admin/patterns
+   - GET /admin/patterns
+   - GET /admin/patterns/:id
+   - PUT /admin/patterns/:id
+   - DELETE /admin/patterns/:id
+
+10. SIZES (5 APIs)
+    - POST /admin/sizes
+    - GET /admin/sizes
+    - GET /admin/sizes/:id
+    - PUT /admin/sizes/:id
+    - DELETE /admin/sizes/:id
+
+11. THEMES (5 APIs)
+    - POST /admin/themes
+    - GET /admin/themes
+    - GET /admin/themes/:id
+    - PUT /admin/themes/:id
+    - DELETE /admin/themes/:id
+
+12. TYPES (5 APIs)
+    - POST /admin/types
+    - GET /admin/types
+    - GET /admin/types/:id
+    - PUT /admin/types/:id
+    - DELETE /admin/types/:id
+
+13. WASH CARES (5 APIs)
+    - POST /admin/wash-cares
+    - GET /admin/wash-cares
+    - GET /admin/wash-cares/:id
+    - PUT /admin/wash-cares/:id
+    - DELETE /admin/wash-cares/:id
+
+WEB USER APIs (Total: 8)
+========================
+
+14. WEB AUTHENTICATION (8 APIs)
+    - POST /web/auth/send-signup-otp
+    - POST /web/auth/signup
+    - POST /web/auth/send-login-otp
+    - POST /web/auth/login
+    - GET /web/auth/profile
+    - PUT /web/auth/profile
+    - POST /web/auth/logout
+    - POST /web/auth/refresh-token
+
+REQUIRED USER SIDE APIs (Total: 45)
+===================================
+
+15. PRODUCTS (8 APIs)
+    - GET /web/products (with filters)
+    - GET /web/products/:id
+    - GET /web/products/search
+    - GET /web/products/category/:categoryId
+    - GET /web/products/brand/:brandId
+    - GET /web/products/featured
+    - GET /web/products/trending
+    - GET /web/products/related/:productId
+
+16. CART (6 APIs)
+    - POST /web/cart/add
+    - GET /web/cart
+    - PUT /web/cart/update/:itemId
+    - DELETE /web/cart/remove/:itemId
+    - DELETE /web/cart/clear
+    - GET /web/cart/count
+
+17. WISHLIST (5 APIs)
+    - POST /web/wishlist/add
+    - GET /web/wishlist
+    - DELETE /web/wishlist/remove/:productId
+    - DELETE /web/wishlist/clear
+    - GET /web/wishlist/count
+
+18. ADDRESSES (5 APIs)
+    - POST /web/addresses
+    - GET /web/addresses
+    - GET /web/addresses/:id
+    - PUT /web/addresses/:id
+    - DELETE /web/addresses/:id
+
+19. ORDERS (8 APIs)
+    - POST /web/orders/create
+    - GET /web/orders
+    - GET /web/orders/:id
+    - PUT /web/orders/:id/cancel
+    - GET /web/orders/:id/track
+    - POST /web/orders/:id/return
+    - GET /web/orders/history
+    - POST /web/orders/:id/review
+
+20. PAYMENTS (4 APIs)
+    - POST /web/payments/initiate
+    - POST /web/payments/verify
+    - GET /web/payments/:orderId/status
+    - POST /web/payments/refund
+
+21. REVIEWS (5 APIs)
+    - POST /web/reviews
+    - GET /web/reviews/product/:productId
+    - PUT /web/reviews/:id
+    - DELETE /web/reviews/:id
+    - GET /web/reviews/my-reviews
+
+22. NOTIFICATIONS (4 APIs)
+    - GET /web/notifications
+    - PUT /web/notifications/:id/read
+    - PUT /web/notifications/mark-all-read
+    - DELETE /web/notifications/:id
+
+TOTAL APIs: 123
+===============
+- Admin APIs: 70
+- Web User APIs: 8
+- Required User Side APIs: 45
+
+API CATEGORIES BREAKDOWN:
+========================
+- Authentication: 10 APIs
+- Product Management: 68 APIs
+  * Categories: 5 APIs
+  * Brands: 5 APIs
+  * Colors: 5 APIs
+  * Fabrics: 5 APIs
+  * Occasions: 5 APIs
+  * Borders: 5 APIs
+  * Fashion Trends: 5 APIs
+  * Patterns: 5 APIs
+  * Sizes: 5 APIs
+  * Themes: 5 APIs
+  * Types: 5 APIs
+  * Wash Cares: 5 APIs
+  * User Profile: 3 APIs
+- E-commerce Features: 45 APIs
+  * Products: 8 APIs
+  * Cart: 6 APIs
+  * Wishlist: 5 APIs
+  * Addresses: 5 APIs
+  * Orders: 8 APIs
+  * Payments: 4 APIs
+  * Reviews: 5 APIs
+  * Notifications: 4 APIs
+
+COMPLETE SAREE E-COMMERCE PLATFORM
+==================================
+Total Required APIs: 123
+- Admin Panel: 70 APIs
+- User Authentication: 8 APIs
+- E-commerce Features: 45 APIs

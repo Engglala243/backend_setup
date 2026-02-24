@@ -1,0 +1,13 @@
+const express = require("express");
+const router = express.Router();
+const verifyToken = require("_middleware/verify-token");
+const controllers = require("../controllers/fabric.controller");
+const schema = require("../validate_schema/fabric.schema");
+
+router.post("/", verifyToken, schema.create, controllers.create);
+router.get("/", verifyToken, controllers.getAll);
+router.get("/:id", verifyToken, controllers.getById);
+router.put("/:id", verifyToken, schema.update, controllers.update);
+router.delete("/:id", verifyToken, controllers.deleteFabric);
+
+module.exports = router;

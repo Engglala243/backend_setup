@@ -1,0 +1,36 @@
+-- Add products table to create_tables.sql
+
+-- Create products table
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` VARCHAR(36) NOT NULL PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+  `description` TEXT NULL,
+  `price` DECIMAL(10, 2) NOT NULL,
+  `discount_price` DECIMAL(10, 2) NULL,
+  `discount_percentage` INT DEFAULT 0,
+  `sku` VARCHAR(100) NULL UNIQUE,
+  `stock_quantity` INT NOT NULL DEFAULT 0,
+  `images` JSON NULL,
+  `category_id` VARCHAR(36) NOT NULL,
+  `brand_id` VARCHAR(36) NULL,
+  `fabric_id` VARCHAR(36) NULL,
+  `occasion_id` VARCHAR(36) NULL,
+  `border_id` VARCHAR(36) NULL,
+  `pattern_id` VARCHAR(36) NULL,
+  `size_id` VARCHAR(36) NULL,
+  `theme_id` VARCHAR(36) NULL,
+  `type_id` VARCHAR(36) NULL,
+  `wash_care_id` VARCHAR(36) NULL,
+  `fashion_trend_id` VARCHAR(36) NULL,
+  `colors` JSON NULL,
+  `rating` DECIMAL(2, 1) DEFAULT 0.0,
+  `review_count` INT NOT NULL DEFAULT 0,
+  `is_featured` TINYINT(1) DEFAULT 0,
+  `is_trending` TINYINT(1) DEFAULT 0,
+  `is_active` TINYINT(1) DEFAULT 1,
+  `is_deleted` TINYINT(1) DEFAULT 0,
+  `created_by` VARCHAR(36) NULL,
+  `updated_by` VARCHAR(36) NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

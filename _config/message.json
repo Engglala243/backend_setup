@@ -1,0 +1,13 @@
+{
+  "user": {
+    "sendOTP": "OTP sent successfully",
+    "register": "User registered successfully",
+    "login": "Login successful",
+    "get": "User profile retrieved successfully",
+    "update": "Profile updated successfully"
+  },
+  "admin": {
+    "login": "Admin login successful",
+    "get": "Admin profile retrieved successfully"
+  }
+}
